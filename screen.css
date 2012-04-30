@@ -1,0 +1,82 @@
+html {
+  font-family:Helvetica,arial,freesans,clean,sans-serif;
+}
+
+fieldset {
+  background-color: silver;
+  border-radius: 4pt 4pt 4pt 4pt;
+  border: 0pt;
+  margin-bottom: 10pt;
+  border-top: 20pt grey solid;
+  width: 35%; 
+}
+
+legend {
+  height: 23px;
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 3px;
+  background-color: grey;
+  width: 100%;
+}
+
+legend .sum {
+  float: right;
+  color: silver;
+}
+
+legend  .sum:after {
+  content: ' Punkte';
+}
+
+li {
+  list-style-type: none;
+  overflow: auto;
+  clear: both;
+}
+
+ul {
+  padding-left: 0pt;
+}
+
+#attributes input[type=text] {
+  width: 40%;
+}
+
+#skillgroups input {
+  width: 60%;
+}
+
+li  label {
+  width: 40%;
+  float: left;
+  overflow: auto;
+}
+
+li span.ui-spinner {
+  width: 20%;
+  float: right;
+}
+
+li span.ui-spinner > * {
+  float: left;
+}
+
+li span.ui-spinner .ui-spinner-button {
+  font-size: 12pt;
+  border: thin black solid;
+  float: right;
+}
+
+li.edit input {
+  float: none;
+  width: 50%;
+}
+
+li.edit button {
+  float: right;
+}
+
+
+

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <title></title>
+  <link media="screen" rel="stylesheet" href="screen.css" type="text/css" />
+  <link media="print" rel="stylesheet" href="print.css" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery.ui.core.js"></script>
+  <script type="text/javascript" src="jquery.ui.js"></script>
+  <script type="text/javascript" src="jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="jquery.ui.button.js"></script>
+  <script type="text/javascript" src="jquery.ui.spinner.js"></script>
+
+  <script type="text/javascript">
+
+  // insert new nodes for skillcosts
+  $(document).ready( function() {
+   $('#skillgroups input').spinner();
+
+//   var skillcost = $('#skillcosts');
+//   var template = $(skillcost).find('dl');
+//   for (var i = 0; i < 15; i++) {
+//   var h = template.html();
+//   $(template).find('dt').html(i);
+//   $(template).find('dd:eq(0)').html(i*2);
+//   $(template).find('dd:eq(1)').html(i*3);
+//   $(skillcost).append(h);
+   });
+
+  $('#skillgroups input').change( function () {
+      var sum = 0;
+      $('#skillgroups input').each(function(index, it) {
+        sum = sum + parseInt($(it).val())
+        });
+      $('#skillgroups legend .sum').html(sum);
+      console.log('updated sum to ' + sum) 
+      });
+
+  </script>
+
+</head>
+<body>
+  <div id="attributes">
+  	<fieldset>
+  		<legend>Attribute</legend>
+  		<ul>
+  			<li>
+  				<label for="">Name</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Spezies</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Spezialisierung</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Erfahrungspunkte</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Reputation</label>
+  				<input type="text" />
+  			</li>
+  		</ul>
+  	</fieldset>
+  </div>
+
+  <div id="skillgroups">
+    <fieldset>
+  		<legend>Fertigkeitsgruppen<span class="sum">0</span></legend>
+  		<ul>
+  			<li>
+  				<label for="">Nahkampf</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Fernkampf</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Athletik</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Sozial</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Wissen</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Handwerk</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Willenst&auml;rke</label>
+  				<input type="text" />
+  			</li>
+  			<li>
+  				<label for="">Sinne</label>
+  				<input type="text" />
+  			</li>
+  		</ul>
+  	</fieldset>
+  </div>
+  <div id="skills">
+  	<fieldset>
+      <legend>Fertigkeiten<span class="sum">0</span></legend>
+  		<ul>
+        <li class="edit">
+        	<input type="text" />
+          <select id="" name="">
+            <option>Nahkampf</option>
+
+            <option>Fernkampf</option>
+            <option>Nahkampf</option>
+            <option>Athletik</option>
+            <option>Sozial</option>
+            <option>Wissen</option>
+            <option>Handwerk</option>
+            <option>Willensst&auml;rke</option>
+            <option>Sinne</option>
+          </select>
+          <button>+</button>
+        </li>
+  		</ul>
+  	</fieldset>
+  </div>
+
+  <div id="skillcosts">
+  	<dl>
+  	  <dt></dt>
+      <dd></dd>
+      <dd></dd>
+  	</dl>
+  </div>
+</body>
+</html>

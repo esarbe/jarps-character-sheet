@@ -1,0 +1,1 @@
+/home/raphael/source/jarps-0.8-character-sheet/jquery-1.7.2.js
