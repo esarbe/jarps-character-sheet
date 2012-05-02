@@ -1,5 +1,6 @@
-html {
+* {
   font-family:Helvetica,arial,freesans,clean,sans-serif;
+  font-size: 10pt;
 }
 
 fieldset {
@@ -8,15 +9,15 @@ fieldset {
   border: 0pt;
   margin-bottom: 10pt;
   border-top: 20pt grey solid;
-  width: 35%; 
 }
 
+
 legend {
-  height: 23px;
+  height: 22px;
   margin-top: 0;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 3px;
+  padding-top: 4px;
   background-color: grey;
   width: 100%;
 }
@@ -24,6 +25,10 @@ legend {
 legend .sum {
   float: right;
   color: silver;
+}
+
+input[type=number] {
+  text-align: right;
 }
 
 legend  .sum:after {
@@ -34,18 +39,58 @@ li {
   list-style-type: none;
   overflow: auto;
   clear: both;
+  padding-top: 1pt;
 }
 
 ul {
+  margin-top: 2pt;
   padding-left: 0pt;
 }
 
-#attributes input[type=text] {
-  width: 40%;
+input {
+  padding-left: 2pt;
+  padding-right: 2pt;
+  border: thin darkgray solid;
+}
+
+input.error {
+  border: thin red solid;
+}
+
+#attributes,
+#skillgroups {
+  float: left;
+}
+#attributes label {
+  max-width: 45%;
+  overflow: hidden;
+  width: 10em;
+}
+
+#attributes input {
+  max-width: 50%;
+  overflow: hidden;
+  width: 12em;
+  float: right;
+}
+
+#skillgroups {
+  clear: left;
+}
+
+body > div {
+  width: 33%;
+  display: inline-block;
+}
+
+#attributes .experiencepoints input,
+#attributes .reputation input {
+  width: 50pt;
 }
 
 #skillgroups input {
-  width: 60%;
+  width: 3em;
+  float: right
 }
 
 li  label {
@@ -54,29 +99,24 @@ li  label {
   overflow: auto;
 }
 
-li span.ui-spinner {
-  width: 20%;
+#skillgroups .ui-spinner-button {
+  display: none;
+}
+
+#skills {
+  width: 67%;
   float: right;
 }
 
-li span.ui-spinner > * {
-  float: left;
-}
-
-li span.ui-spinner .ui-spinner-button {
-  font-size: 12pt;
-  border: thin black solid;
-  float: right;
-}
-
-li.edit input {
+#skills .edit input {
   float: none;
   width: 50%;
 }
 
-li.edit button {
+#skills .edit button {
   float: right;
 }
+
 
 
 
