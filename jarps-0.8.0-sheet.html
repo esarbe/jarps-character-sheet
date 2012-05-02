@@ -14,28 +14,41 @@
 
   <script type="text/javascript">
 
-  // insert new nodes for skillcosts
   $(document).ready( function() {
-   $('#skillgroups input').spinner();
-
-//   var skillcost = $('#skillcosts');
-//   var template = $(skillcost).find('dl');
-//   for (var i = 0; i < 15; i++) {
-//   var h = template.html();
-//   $(template).find('dt').html(i);
-//   $(template).find('dd:eq(0)').html(i*2);
-//   $(template).find('dd:eq(1)').html(i*3);
-//   $(skillcost).append(h);
-   });
-
-  $('#skillgroups input').change( function () {
-      var sum = 0;
-      $('#skillgroups input').each(function(index, it) {
-        sum = sum + parseInt($(it).val())
+  
+    // add spinner with sum function
+    $('#skillgroups input').spinner({
+      min:"0",
+      stop: function () {
+        var sum = 0.0;
+        $('#skillgroups input').each(function(index, it) {
+          var value = parseFloat($(it).val())
+          var intValue = isNaN(value) ? 0 : value;
+          sum = sum + intValue;
         });
       $('#skillgroups legend .sum').html(sum);
-      console.log('updated sum to ' + sum) 
-      });
+      }
+    });
+
+
+    $("#skills .edit button").click(function (){
+      var nameInput = $("#skills .edit input");
+      var skillname = nameInput.val();
+
+      if (skillname == "") {
+        nameInput.addClass("error");
+        nameInput.title = "Name der Fertigkeit muss mindestens 4 Zeichen lang sein.";
+        console.log("bah")
+        return;
+      } 
+        
+      var skilltemplate = $('#skills li.template').clone();
+      skilltemplate.find("label").html(skillname)
+      $('#skills fieldset ul').prepend(skilltemplate);
+
+    });
+  });
+
 
   </script>
 
@@ -54,16 +67,16 @@
   				<input type="text" />
   			</li>
   			<li>
-  				<label for="">Spezialisierung</label>
+  				<label for="">Beruf</label>
   				<input type="text" />
   			</li>
-  			<li>
+  			<li class="experiencepoints">
   				<label for="">Erfahrungspunkte</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
-  			<li>
+  			<li class="reputation">
   				<label for="">Reputation</label>
-  				<input type="text" />
+  				<input type="number" disabled="disabled" />
   			</li>
   		</ul>
   	</fieldset>
@@ -75,43 +88,47 @@
   		<ul>
   			<li>
   				<label for="">Nahkampf</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Fernkampf</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Athletik</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Sozial</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Wissen</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Handwerk</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Willenst&auml;rke</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   			<li>
   				<label for="">Sinne</label>
-  				<input type="text" />
+  				<input type="number" />
   			</li>
   		</ul>
   	</fieldset>
   </div>
   <div id="skills">
+
   	<fieldset>
       <legend>Fertigkeiten<span class="sum">0</span></legend>
-  		<ul>
+      <ul>
+        <li class="template">
+          <label for=""></label><input type="number" />          
+        </li>
         <li class="edit">
         	<input type="text" />
           <select id="" name="">
@@ -132,12 +149,5 @@
   	</fieldset>
   </div>
 
-  <div id="skillcosts">
-  	<dl>
-  	  <dt></dt>
-      <dd></dd>
-      <dd></dd>
-  	</dl>
-  </div>
 </body>
 </html>
