@@ -14,6 +14,17 @@
 
   <script type="text/javascript">
 
+  /**
+	  * calculates the costs for a given skill level
+	  */
+  function skillcost(level) {
+    switch(level) {
+      case 0: return 0;
+      case 1: return 1;
+      default: return skillcost (level - 1) + skillcost(level - 2)
+    }
+  }
+
   $(document).ready( function() {
   
     // add spinner with sum function
@@ -30,6 +41,8 @@
       }
     });
 
+    
+
 
     $("#skills .edit button").click(function (){
       var nameInput = $("#skills .edit input");
@@ -37,13 +50,20 @@
 
       if (skillname == "") {
         nameInput.addClass("error");
-        nameInput.title = "Name der Fertigkeit muss mindestens 4 Zeichen lang sein.";
-        console.log("bah")
+        nameInput.attr('title', "Name der Fertigkeit muss mindestens 4 Zeichen lang sein.");
         return;
-      } 
+      }
+
+      
+      nameInput.attr('title', "Name der Fertigkeit");
         
       var skilltemplate = $('#skills li.template').clone();
       skilltemplate.find("label").html(skillname)
+      skilltemplate.find("input[type=number].value").spinner({
+        min: 0
+      }); 
+
+      skilltemplate.removeClass('template');
       $('#skills fieldset ul').prepend(skilltemplate);
 
     });
@@ -127,7 +147,9 @@
       <legend>Fertigkeiten<span class="sum">0</span></legend>
       <ul>
         <li class="template">
-          <label for=""></label><input type="number" />          
+          <label for=""></label>
+          <input type="number" class="value" />
+          <input type="number" class="skillgroup-value" disabled="disabled"/>
         </li>
         <li class="edit">
         	<input type="text" />
