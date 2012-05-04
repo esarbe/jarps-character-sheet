@@ -29,6 +29,7 @@ legend .sum {
 
 input[type=number] {
   text-align: right;
+  width: 3em;
 }
 
 legend  .sum:after {
@@ -47,14 +48,21 @@ ul {
   padding-left: 0pt;
 }
 
+select,
+button,
 input {
   padding-left: 2pt;
   padding-right: 2pt;
   border: thin darkgray solid;
 }
 
+
 input.error {
   border: thin red solid;
+}
+
+.template { 
+  display: none;
 }
 
 #attributes,
@@ -89,7 +97,6 @@ body > div {
 }
 
 #skillgroups input {
-  width: 3em;
   float: right
 }
 
