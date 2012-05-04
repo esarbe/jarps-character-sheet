@@ -15,8 +15,8 @@
   <script type="text/javascript">
 
   /**
-	  * calculates the costs for a given skill level
-	  */
+  * calculates the costs for a given skill level
+  */
   function skillcost(level) {
     switch(level) {
       case 0: return 0;
@@ -25,25 +25,27 @@
     }
   }
 
+  function sumUp(elements, valuefunc) {
+    var sum = 0.0;
+    elements.each(function(index, it) {
+      var value = valuefunc(parseFloat($(it).val()))
+      var intValue = isNaN(value) ? 0 : value;
+      sum = sum + intValue;
+    });
+    return sum;
+  }
+
   $(document).ready( function() {
   
     // add spinner with sum function
     $('#skillgroups input').spinner({
       min:"0",
       stop: function () {
-        var sum = 0.0;
-        $('#skillgroups input').each(function(index, it) {
-          var value = parseFloat($(it).val())
-          var intValue = isNaN(value) ? 0 : value;
-          sum = sum + intValue;
-        });
-      $('#skillgroups legend .sum').html(sum);
+        var sum = sumUp($('#skillgroups input'), function(val){return val});
+        $('#skillgroups legend .sum').html(sum);
       }
     });
-
     
-
-
     $("#skills .edit button").click(function (){
       var nameInput = $("#skills .edit input");
       var skillname = nameInput.val();
@@ -53,15 +55,18 @@
         nameInput.attr('title', "Name der Fertigkeit muss mindestens 4 Zeichen lang sein.");
         return;
       }
-
       
       nameInput.attr('title', "Name der Fertigkeit");
         
       var skilltemplate = $('#skills li.template').clone();
       skilltemplate.find("label").html(skillname)
       skilltemplate.find("input[type=number].value").spinner({
-        min: 0
-      }); 
+        min: 0,
+        stop: function () {
+          var sum = sumUp($('#skills li.skill input.value'), function(val) { return skillcost(val)});
+          $("#skills legend .sum").html(sum);
+        }
+      });
 
       skilltemplate.removeClass('template');
       $('#skills fieldset ul').prepend(skilltemplate);
@@ -146,10 +151,10 @@
   	<fieldset>
       <legend>Fertigkeiten<span class="sum">0</span></legend>
       <ul>
-        <li class="template">
+        <li class="skill template">
           <label for=""></label>
-          <input type="number" class="value" />
           <input type="number" class="skillgroup-value" disabled="disabled"/>
+          <input type="number" class="value" />
         </li>
         <li class="edit">
         	<input type="text" />
