@@ -52,7 +52,8 @@
 
   $(document).ready( function() {
   
-    // add spinner with sum function
+    // add spinner with sum function to all inputs in
+    // the skillgroups container
     $('#skillgroups input').spinner({
       min:"0",
       stop: function () {
@@ -62,7 +63,10 @@
         $('#skillgroups legend .sum').html(sum);
       }
     });
-    
+
+    /*
+		* Callback for adding a new skill to the character
+		*/ 
     $("#skills .edit button").click(function (){
       var nameInput = $("#skills .edit input");
       var skillname = nameInput.val();
@@ -73,9 +77,14 @@
         return;
       }
       
+      // reset title and error message (just to be sure)
+      nameInput.removeClass('error')
       nameInput.attr('title', "Name der Fertigkeit");
-        
+      
+			// fetch the skill template fragment html
       var skilltemplate = $('#skills li.template').clone();
+      
+      // set name
       skilltemplate.find("label").html(skillname)
 
       // add spinner function
