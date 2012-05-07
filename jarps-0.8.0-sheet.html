@@ -25,12 +25,12 @@
     }
   }
 
-  function sumUp(elements, valuefunc) {
+  function sumUp(elements, translate) {
     var sum = 0.0;
     elements.each(function(index, it) {
-      var value = valuefunc(parseFloat($(it).val()))
+      var value = parseFloat($(it).val())
       var intValue = isNaN(value) ? 0 : value;
-      sum = sum + intValue;
+      sum = sum + translate(intValue);
     });
     return sum;
   }
@@ -41,7 +41,9 @@
     $('#skillgroups input').spinner({
       min:"0",
       stop: function () {
-        var sum = sumUp($('#skillgroups input'), function(val){return val});
+        var sum = sumUp($('#skillgroups input'),
+        	function(val){return val}
+				);
         $('#skillgroups legend .sum').html(sum);
       }
     });
@@ -63,7 +65,7 @@
       skilltemplate.find("input[type=number].value").spinner({
         min: 0,
         stop: function () {
-          var sum = sumUp($('#skills li.skill input.value'), function(val) { return skillcost(val)});
+          var sum = sumUp($('#skills li.skill input.value.ui-spinner-input'), function(val) { return skillcost(val)});
           $("#skills legend .sum").html(sum);
         }
       });
