@@ -77,7 +77,10 @@
         
       var skilltemplate = $('#skills li.template').clone();
       skilltemplate.find("label").html(skillname)
-      skilltemplate.find("input[type=number].value").spinner({
+
+      // add spinner function
+      var input = skilltemplate.find("input[type=number].value");
+			input.spinner({
         min: 0,
         // add callback for spinner stop event: sum up the skillcost values of all
         // existing skills and set the new skillpoints value
