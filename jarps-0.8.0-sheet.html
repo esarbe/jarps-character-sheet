@@ -25,6 +25,21 @@
     }
   }
 
+  /**
+  * iterate over all skills an calculate their costs, update
+  * GUI elements
+  */
+  function refreshSkillcosts() {
+		var sum = sumUp($('#skills li.skill input.value.ui-spinner-input'), function(val) { return skillcost(val)});
+    $('#skills legend .sum').html(sum);
+    $('#attributes .reputation input').val(sum);
+  }
+
+  /**  
+  * iterate over all elements mathing the 'elements' selector,
+  * convert their values to numbers, apply the 'translate' function
+  * and sum up the values
+  */
   function sumUp(elements, translate) {
     var sum = 0.0;
     elements.each(function(index, it) {
