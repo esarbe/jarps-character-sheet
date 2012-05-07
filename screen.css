@@ -1,6 +1,7 @@
-* {
+html {
   font-family:Helvetica,arial,freesans,clean,sans-serif;
   font-size: 10pt;
+  text-shadow: 0 0.5px 0 #EEEEEE;
 }
 
 fieldset {
@@ -114,7 +115,6 @@ li  label {
 
 #skills {
   width: 67%;
-  float: right;
 }
 
 #skills .edit input {
