@@ -11,6 +11,8 @@
   <script type="text/javascript" src="jquery.ui.widget.js"></script>
   <script type="text/javascript" src="jquery.ui.button.js"></script>
   <script type="text/javascript" src="jquery.ui.spinner.js"></script>
+  <script type="text/javascript" src="jquery.ui.mouse.js"></script>
+  <script type="text/javascript" src="jquery.ui.sortable.js"></script>
 
   <script type="text/javascript">
 
@@ -95,12 +97,16 @@
         // existing skills and set the new skillpoints value
         stop: refreshSkillcosts 
       });
+
+
 			$(input).val(0);
 
       skilltemplate.removeClass('template');
       $('#skills fieldset ul').append(skilltemplate);
 
-			refreshSkillcosts();
+      refreshSkillcosts();
+
+      $('#skills li').sortable();
 
     });
   });
