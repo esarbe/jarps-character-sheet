@@ -72,7 +72,7 @@
       var skillname = nameInput.val();
 
       if (skillname == "") {
-        nameInput.addClass("error");
+        nameInput.addClass('error');
         nameInput.attr('title', "Name der Fertigkeit muss mindestens 4 Zeichen lang sein.");
         return;
       }
@@ -184,7 +184,9 @@
       <ul>
         <li class="skill template">
           <label for=""></label>
+          <span class="skillgroup">Fernkampf</span> 
           <input type="number" class="skillgroup-value" disabled="disabled"/>
+
           <input type="number" class="value" />
         </li>
         <li class="edit">
