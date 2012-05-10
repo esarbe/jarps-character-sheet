@@ -5,6 +5,7 @@
   <title></title>
   <link media="screen" rel="stylesheet" href="screen.css" type="text/css" />
   <link media="print" rel="stylesheet" href="print.css" type="text/css" />
+  <script type="text/javascript" src="memoize.js"></script>
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="jquery.ui.core.js"></script>
   <script type="text/javascript" src="jquery.ui.js"></script>
@@ -15,17 +16,21 @@
   <script type="text/javascript" src="jquery.ui.sortable.js"></script>
 
   <script type="text/javascript">
-
+  
   /**
   * calculates the costs for a given skill level
+  * fibonacci sequence with an additional start value 
   */
-  function skillcost(level) {
+  function fib012(level) {
     switch(level) {
       case 0: return 0;
       case 1: return 1;
-      default: return skillcost (level - 1) + skillcost(level - 2)
+      case 2: return 2;
+      default: return fib012(level - 1) + fib012(level - 2);
     }
   }
+ 
+
 
   /**
   * iterate over all skills an calculate their costs, update
@@ -51,6 +56,12 @@
     });
     return sum;
   }
+
+  /**
+  * skillcost function
+  * calculates the cost of a skill for the given level
+  */
+  var skillcost = memoize(fib012);
 
   $(document).ready( function() {
   
